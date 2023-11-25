@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>camelCase vs Kebab-Case</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>camelCase vs Kebab-Case Experiment</h1>
+        <p>Studies performed in natural language reading show that people read 
+            better (i.e., 20% faster) when any explicit
+            separator is used between words. </p>
+        <p>
+            For example: The overall message is that readingthistext is more difficult than reading_this_text or reading this text
+        </p>
+        <p>The goal of this experiment is to investigate 
+            whether code reading speed if affected by the type of indentifier used (i.e. camelCase or kebab-case)</p>
+
+        
+            <h2>
+                What should I do as a user?
+            </h2>
+
+        <p>Your task:</p>
+        <ol>
+            <li>Provide demographics information.</li>
+            <li>Read a short sentence.</li>
+            <li>Read a set of identifiers.</li>
+            <li>Select the unique identifier corresponding to the sentence you just read.</li>
+            <li>Complete 10 tasks, half in camelCase and half in kebab-case.</li>
+            <li>Your answers and time-taken-to-answer are being recorder.</li>
+        </ol>
+        <p>Thank you in advance for participating in our experiment!</p>
+
+        <h2>Click <a href="{% url 'demographics' %}">here</a> to start with the experiment</h2>
+    </div>
+
+    <script src="{% static 'script.js' %}"></script>
+    <script>
+        window.onload = function() {
+            Swal.fire({
+                title: "Welcome to our experiment",
+                text: "Please read the instructions carefully. Should you have any questions, ask me.",
+                icon: "info",
+                timer: 10000,
+                timerProgressBar: true,
+                showConfirmButton: true,
+                grow: true,
+                allowClickOutside: true,
+                confirmButtonColor: 'green',
+            });
+        };
+    </script>
+    {% include 'footer.html' %}
+</body>
+</html>
