@@ -34,10 +34,12 @@ const questions = [
 
 
 
+let startTime;
+let totalTimeTaken = 0;
+let interval;
+
 // get question index
-const getQuestionIndex = (question) => {
-    return questions.indexOf(question)
-}
+
 
 let shownQuestions = []
 
@@ -48,6 +50,7 @@ let randomQuestionIndex = Math.floor(Math.random() * questions.length)
 
 
 function displayFirstQuestion() {
+    startTime = new Date()
     const selectedQuestion = questions[randomQuestionIndex];
     shownQuestions.push(selectedQuestion)
     const { sentence, identifiers } = selectedQuestion;
@@ -75,6 +78,11 @@ function displayFirstQuestion() {
             const isCorrect = selectedAnswer === selectedQuestion.correctAnswer;
             console.log(`Is Correct? ${isCorrect}`);
             if (isCorrect) {
+                const endTime = new Date();
+                const timeTaken = (endTime - startTime) / 1000;
+                totalTimeTaken += timeTaken;
+                console.log("Time taken for question 1:", timeTaken);
+                console.log("TOTAL TIME TAKEN UNTIL NOW:", totalTimeTaken)
                 Swal.fire({
                     title: "Your answer is correct ",
                     icon: "success",
@@ -84,10 +92,12 @@ function displayFirstQuestion() {
                     grow: true,
                     confirmButtonColor: 'green',
                     allowClickOutside: true,
-                });
-                console.log("since correct, calling next")
-                nextQuestion();
-                console.log("called")
+                }).then(() => {
+                    startTimer()
+                    console.log("since correct, calling next")
+                    nextQuestion();
+                    console.log("called")
+                })
             } else {
                 Swal.fire({
                     title: "Your answer is not correct ",
@@ -102,11 +112,12 @@ function displayFirstQuestion() {
             }
         });
     });
-    
+
 }
 
 
 function displayQuestion(index) {
+    startTime = new Date()
     const selectedQuestion = questions[index];
     const { sentence, identifiers } = selectedQuestion;
     shownQuestions.push(selectedQuestion)
@@ -133,6 +144,11 @@ function displayQuestion(index) {
             const isCorrect = selectedAnswer === selectedQuestion.correctAnswer;
             console.log(`Is Correct? ${isCorrect}`);
             if (isCorrect) {
+                const endTime = new Date();
+                const timeTaken = (endTime - startTime) / 1000;
+                totalTimeTaken += timeTaken;
+                console.log(`Time taken for question ${selectedAnswer}`, timeTaken);
+                console.log("TOTAL TIME TAKEN UNTIL NOW:", totalTimeTaken)
                 Swal.fire({
                     title: "Your answer is correct ",
                     icon: "success",
@@ -142,10 +158,12 @@ function displayQuestion(index) {
                     grow: true,
                     confirmButtonColor: 'green',
                     allowClickOutside: true,
-                });
-                console.log("since correct, calling next")
-                nextQuestion();
-                console.log("called")
+                }).then(() => {
+                    startTimer()
+                    console.log("since correct, calling next")
+                    nextQuestion();
+                    console.log("called")
+                })
             } else {
                 Swal.fire({
                     title: "Your answer is not correct ",
@@ -172,8 +190,10 @@ function nextQuestion() {
             displayQuestion(randomQuestionIndex);
         }
     } else {
+        totalTimeTaken = totalTimeTaken.toFixed(2);
         Swal.fire({
             title: "Congratulations! You have succesfully completed the experiment",
+            text: `You took ${totalTimeTaken} seconds to answer all questions`,
             icon: "success",
             timer: 10000,
             timerProgressBar: true,
@@ -181,8 +201,20 @@ function nextQuestion() {
             grow: true,
             confirmButtonColor: 'green',
             allowClickOutside: true,
-        });
+            confirmButtonText: "Go to Home Page",
+        }).then(() => {
+            window.location.href = '/'
+        })
     }
+}
+
+function startTimer() {
+    startTime = new Date();
+    interval = setInterval(() => {
+        const currentTime = new Date();
+        const timeElapsed = (currentTime - startTime) / 1000;
+        console.log("Time elapsed:", timeElapsed);
+    }, 1000);
 }
 
 window.onload = () => {
