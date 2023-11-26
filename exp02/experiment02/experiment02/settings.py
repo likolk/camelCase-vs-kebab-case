@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
 ]
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -46,7 +47,7 @@ INSTALLED_APPS = [
     # 
     "myapp"
 ]
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -59,7 +60,6 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    # 'camelkebabexperiment.onrender.com',
     'https://oktesting.onrender.com',
     'https://camelkebabexperiment.onrender.com'
 ]

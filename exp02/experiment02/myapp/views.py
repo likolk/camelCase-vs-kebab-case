@@ -30,8 +30,7 @@ def submitDemographics(request):
             writer = csv.writer(file)
             writer.writerow([age, gender, education, occupation, comments])
 
-        return render(request, 'questions.html', {
-            "message": "Submission Successful"})
+        return render(request, 'questions.html');
     
     else:
         return render(request, 'demographics.html')
