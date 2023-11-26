@@ -1,0 +1,4 @@
+services:
+  - name: exp02
+    envVars:
+    image: likolk/exp02:tag
