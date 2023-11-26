@@ -1,7 +1,5 @@
 FROM python:3.11
 
-ENV PYTHONUNBUFFERED 1
-
 WORKDIR /app
 
 COPY . /app
@@ -14,7 +12,6 @@ RUN pip install --upgrade pip && \
 
 EXPOSE 8000
 
-VOLUME /var/run/docker.sock:/var/run/docker.sock
-
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
