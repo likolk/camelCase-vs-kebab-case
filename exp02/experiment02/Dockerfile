@@ -8,7 +8,10 @@ WORKDIR /app
 COPY . /app
 
 RUN pip install --upgrade pip && \
-    pip install django
+    pip install django && \
+    apt-get update && \
+    apt-get install -y python3 && \
+    apt-get install -y python3-pip 
 
 EXPOSE 8000
 
