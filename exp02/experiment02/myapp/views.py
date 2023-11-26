@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import csv, uuid
+from django.views.decorators.csrf import ensure_csrf_cookie
+
 
 def index(request):
     return render(request, 'index.html')
@@ -11,6 +13,8 @@ def demographics(request):
 def questions(request):
     return render(request, 'questions.html')
 
+
+@ensure_csrf_cookie
 def submitDemographics(request):
     print("submitting demographics")
     if request.method == 'POST':
@@ -32,6 +36,7 @@ def submitDemographics(request):
     else:
         return render(request, 'demographics.html')
         
+
 
 
 
