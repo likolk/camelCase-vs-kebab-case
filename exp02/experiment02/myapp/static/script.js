@@ -66,7 +66,7 @@ function displayFirstQuestion() {
 
     console.log("Displaying first question:", selectedQuestion);
     console.log("Generated HTML:", questionFormHTML);
-    console.log("Correct answer:", selectedQuestion.correctAnswer);c
+    console.log("Correct answer:", selectedQuestion.correctAnswer);
 
     questionContainer.innerHTML = questionFormHTML;
 
