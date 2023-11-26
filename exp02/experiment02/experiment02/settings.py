@@ -55,7 +55,10 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'django.middleware.csrf.CsrfViewMiddleware',
 ]
+
+CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com','https://127.0.0.1:8000', 'https://localhost:8000']
 
 ROOT_URLCONF = "experiment02.urls"
 
