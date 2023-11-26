@@ -12,18 +12,23 @@ def questions(request):
     return render(request, 'questions.html')
 
 def submitDemographics(request):
+    print("submitting demographics")
     if request.method == 'POST':
+        print("inside POST");
         age = request.POST.get('age')
         gender = request.POST.get('gender')
         education = request.POST.get('education')
         occupation = request.POST.get('occupation')
         comments = request.POST.get('comments')
 
+
         with open('demographics.csv', 'a', newline='') as file:
             writer = csv.writer(file)
             writer.writerow([age, gender, education, occupation, comments])
-        
-        return render(request, 'questions.html')
+
+        return render(request, 'questions.html', {
+            "message": "Submission Successful"})
+    
     else:
         return render(request, 'demographics.html')
         
