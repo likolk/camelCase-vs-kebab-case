@@ -50,6 +50,11 @@ let randomQuestionIndex = Math.floor(Math.random() * questions.length)
 
 
 function displayFirstQuestion() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const session_id = urlParams.get('session_id');
+    console.log("session_id", session_id)
+
+    
     startTime = new Date()
     const selectedQuestion = questions[randomQuestionIndex];
     shownQuestions.push(selectedQuestion)
@@ -93,10 +98,10 @@ function displayFirstQuestion() {
                     confirmButtonColor: 'green',
                     allowClickOutside: true,
                 }).then(() => {
-                    startTimer()
-                    console.log("since correct, calling next")
+                    console.log("saving response")
+                    sendResponseToServer(session_id, selectedQuestion.sentence, selectedAnswer, timeTaken);
+                    console.log("response should be saved")
                     nextQuestion();
-                    console.log("called")
                 })
             } else {
                 Swal.fire({
@@ -112,11 +117,13 @@ function displayFirstQuestion() {
             }
         });
     });
-
 }
 
 
 function displayQuestion(index) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const session_id = urlParams.get('session_id');
+    console.log("session_id", session_id)
     startTime = new Date()
     const selectedQuestion = questions[index];
     const { sentence, identifiers } = selectedQuestion;
@@ -161,8 +168,10 @@ function displayQuestion(index) {
                 }).then(() => {
                     startTimer()
                     console.log("since correct, calling next")
+                    console.log("saving response")
+                    sendResponseToServer(session_id, selectedQuestion.sentence, selectedAnswer, timeTaken);
+                    console.log("response should be saved")
                     nextQuestion();
-                    console.log("called")
                 })
             } else {
                 Swal.fire({
@@ -203,7 +212,7 @@ function nextQuestion() {
             allowClickOutside: true,
             confirmButtonText: "Go to Home Page",
         }).then(() => {
-            window.location.href = '/'
+            window.location.href = "/demographics/"
         })
     }
 }
@@ -216,6 +225,27 @@ function startTimer() {
         console.log("Time elapsed:", timeElapsed);
     }, 1000);
 }
+// function to get the CSRF token
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        console.log("document.cookie", document.cookie)
+        const cookies = document.cookie.split(';');
+        console.log("cookies", cookies)
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            console.log("cookie", cookie)
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === name + '=') {
+                console.log("cookie.substring(0, name.length + 1)", cookie.substring(0, name.length + 1))
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                console.log("cookieValue", cookieValue)
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
 
 window.onload = () => {
     displayFirstQuestion();
@@ -223,6 +253,36 @@ window.onload = () => {
 
 
 
+
+function sendResponseToServer(session_id, question, answer, timeTaken) {
+    // get the session id generated in the python file
+
+    fetch('/save-response/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken'),
+        },
+        body: JSON.stringify({
+            session_id:  session_id,
+            question: question,
+            answer: answer,
+            time_taken: timeTaken
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .then(data => {
+        console.log('Response saved successfully:', data);
+    })
+    .catch(error => {
+        console.error('Error saving response:', error);
+    });
+}
 
 
 
