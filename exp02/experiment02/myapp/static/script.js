@@ -307,4 +307,3 @@ function sendResponseToServer(session_id, question, answer, timeTaken) {
 }
 
 
-
