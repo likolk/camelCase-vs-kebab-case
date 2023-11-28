@@ -1,8 +1,8 @@
 const questions = [
     {
         sentence: 'move south',
-        identifiers: ['move-source', 'move-south', 'more-south', 'mover-sound'],
-        correctAnswer: 'move-south'
+        identifiers: ['moveSource', 'moveSouth', 'moreSouth', 'moverSound'],
+        correctAnswer: 'moveSouth'
     },
     {
         sentence: 'move north',
@@ -10,25 +10,47 @@ const questions = [
         correctAnswer: 'move-north'
     },
     // {
-    //     sentence: 'move east',
-    //     identifiers: ['move-east', 'move-easy', 'move-est', 'move-ast'],
-    //     correctAnswer: 'move-east'
+    //     sentence: "pass experimentation and evaluation course",
+    //     identifiers: ['pass-experimentation-and-evaluation-course', 'pass-experimentation-and-evaluation-curse', 'pass-experimentation-and-evaluation-coarse', 'oass-experimentation-and-evaluation-course'],
+    //     correctAnswer: 'pass-experimentation-and-evaluation-course'
     // },
     // {
-    //     sentence: 'move west',
-    //     identifiers: ['move-wast', 'move-vest', 'move-uest', 'move-west'],
-    //     correctAnswer: 'move-west'
+    //     sentence: "eat lunch at mensa",
+    //     identifiers: ['eat-lunch-at-mensa', 'eat-lanch-at-mensa', 'eat-launch-at-mensa', 'it-lunch-at-mensa'],
+    //     correctAnswer: 'eat-lunch-at-mensa'
     // },
     // {
-    //     sentence: 'move up',
-    //     identifiers: ['move-p', 'move-pp', 'move-up', 'move-uo'],
-    //     correctAnswer: 'move-up'
+    //     sentence: "Università della Svizzera italiana",
+    //     identifiers: ['universitàDellaSvizzerataliana', 'universitàDellaSvizzeraItaliano', 'universitàDellaSvizzeraItaliana', 'universitàDellaSvizzeraItaliama'],
+    //     correctAnswer: 'universitàDellaSvizzeraItaliana'
     // },
     // {
-    //     sentence: 'move down',
-    //     identifiers: ['move-down', 'move-don', 'move-donw', 'move-dow'],
-    //     correctAnswer: 'move-down'
+    //     sentence: "180 ECTS",
+    //     identifiers: ['18O-ECTS', '180-ECTS', '180-ETCS', '780-ECTS'],
+    //     correctAnswer: '180-ECTS'
     // },
+    // {
+    //     sentence: "I am a university student",
+    //     identifiers: ['iAmAnUniversityStudent', 'iAmAUniversityStudent', 'AmAUniversityStudent', 'iAmUniversityStudent'],
+    //     correctAnswer: 'iAmAUniversityStudent'
+    // },
+    // {
+    //     sentence: "tomorrow it is gonna be rainy",
+    //     identifiers: ['tomorrowItIsGonnaBeRany', 'tomorrowItIsGonneBeRainy', 'tomorrowItIsGonnaBeRaney', 'tomorrowItIsGonnaBeRainy'],
+    //     correctAnswer: 'tomorrowItIsGonnaBeRainy'
+    // }, 
+    // {
+    //     sentence: "Looking forward to the Christmas Holidays",
+    //     identifiers: ['lokingForwardToTheChristmasHolidays', 'lookingForwardToTheChristmasHoliday', 'lookingForwardToTheChristmasHolidays', 'lookingForwardToTheChristmasHollidays'],
+    //     correctAnswer: 'lookingForwardToTheChristmasHolidays'  
+    // },
+    // {
+    //     sentence: "This is the last sentence",
+    //     identifiers: ['this-the-last-sentence', 'this-is-the-last-sentence', 'this-is-the-last-sentences', 'these-is-the-last-sentence'],
+    //     correctAnswer: 'this-is-the-last-sentence'
+    // }
+
+
 
 ]
 
@@ -54,7 +76,7 @@ function displayFirstQuestion() {
     const session_id = urlParams.get('session_id');
     console.log("session_id", session_id)
 
-    
+
     startTime = new Date()
     const selectedQuestion = questions[randomQuestionIndex];
     shownQuestions.push(selectedQuestion)
