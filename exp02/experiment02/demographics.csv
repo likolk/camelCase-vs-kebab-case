@@ -1,4 +1,9 @@
-05b747d5-69fa-4243-b7c3-fe0828ca6b52,32,male,phd,engineer,,move north,move-north,0.773,move south,moveSouth,0.693
-9a755218-3d28-47a5-a5b0-2fabd3080d6b,99,female,bachelors,engineer,,move north,move-north,0.878,move south,moveSouth,1.649
-17126305-18c3-4944-bfc4-d7af3d2bc9c6,48,female,bachelors,teacher,,move south,moveSouth,1.894,move north,move-north,2.581
-c9a820a4-5334-4bc9-acbd-72476c18ef11,85,female,high-school,student,,move north,move-north,0.888,move south,moveSouth,0.506
+(30, 'female', 'high-school', 'student', '', '', '', 0.0, '9a233bb2-2158-4fae-9352-d67c4d909a9f')
+(21, 'female', 'bachelors', 'engineer', '', '', '', 0.0, '0202491e-1e74-49a7-86be-6c532a9c927c')
+(100, 'male', 'high-school', 'student', '', '', '', 0.0, '38a26b10-843c-431a-aaa2-c67be435449d')
+(23, 'male', 'bachelors', 'student', 'kelvin', '', '', 0.0, 'ca015738-66f1-441d-8987-6cd9c70e723e')
+(99, 'male', 'bachelors', 'student', 'kelvinooo', '', '', 0.0, '32656650-b40f-44f8-8b04-f7d55ce55627')
+(66, 'male', 'bachelors', 'student', 'nanana', 'move north|move south|', 'move-north|moveSouth|', 1.848, '2f615bd4-d935-4ee4-a049-f4d34bcf6f1f')
+(50, 'female', 'bachelors', 'engineer', 'noh', 'move south|move north|', 'moveSouth|move-north|', 10.706, '2ff05f92-80cb-42f3-8df1-390cc6f5a3cb')
+(55, 'female', 'postdoc', 'student', 'ok', 'move south,move north,', 'moveSouth,move-north,', 1.819, '573eb903-68be-4cf3-85dc-1ca0412b493f')
+(23, 'male', 'bachelors', 'student', 'none', 'move south,move north,', 'moveSouth,move-north,', 6.176, '97b476b8-610c-401d-b769-c614f706ddb5')
