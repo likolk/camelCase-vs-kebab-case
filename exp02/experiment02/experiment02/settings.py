@@ -88,12 +88,26 @@ WSGI_APPLICATION = "experiment02.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
+# settings.py
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'exp02',  # Your PostgreSQL database name
+        'USER': 'kelvin',  # Your PostgreSQL username
+        'PASSWORD': '8r9aws8VsQyRxv3a9vcqB9PFcA6VUKYz',  # Your PostgreSQL password
+        'HOST': 'dpg-cljgru6g1b2c73apkn90-a.frankfurt-postgres.render.com',  # Hostname/address
+        'PORT': '5432',  # PostgreSQL port
     }
 }
+
 
 
 # Password validation

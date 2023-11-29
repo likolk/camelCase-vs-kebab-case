@@ -4,6 +4,7 @@ import csv, uuid
 from django.views.decorators.csrf import ensure_csrf_cookie
 import json
 from django.urls import reverse
+from .models import Demographics
 
 def index(request):
     return render(request, 'index.html')
@@ -24,16 +25,16 @@ def submitDemographics(request):
         comments = request.POST.get('comments')
 
         session_id = str(uuid.uuid4())
-        print("session id is:", session_id)
 
-        if not session_id:
-            request.session.save()
-            session_id = request.session.session_key
-
-        with open('demographics.csv', 'a', newline='') as file:
-            writer = csv.writer(file)
-            writer.writerow([session_id, age, gender, education, occupation, comments])
-
+        # Create a new entry in the Demographics model
+        d = Demographics()
+        d.session_id = session_id
+        d.age = age
+        d.gender = gender
+        d.education = education
+        d.occupation = occupation
+        d.comments = comments
+        d.save()
         return redirect(reverse('questions') + f'?session_id={session_id}')
     else:
         return render(request, 'demographics.html')
@@ -45,55 +46,20 @@ def save_response(request):
         question = data.get('question')
         answer = data.get('answer')
         time_taken = data.get('time_taken')
-        # age = ''
-        # gender = ''
-        # education = ''
-        # occupation = ''
 
-        # try:
-        #     with open('demographics.csv', 'r') as file:
-        #         reader = csv.reader(file)
-        #         for row in reader:
-        #             if row[0] == session_id:
-        #                 print("yes it matches")
-        #                 age = row[1] 
-        #                 gender = row[2]
-        #                 education = row[3]
-        #                 occupation = row[4]
-        #                 break
-        # except:
-        #     pass
+        # retrieve the Demographics entry based on the session_id
+        demographics_instance = Demographics.objects.filter(session_id=session_id).first()
 
+        if demographics_instance:
+            # append new response data to existing fields plus a spearator
+            demographics_instance.questions += question + '|'
+            demographics_instance.answers += answer + '|'
+            demographics_instance.time_taken += time_taken
+            demographics_instance.save()
 
-        rows = []
-        with open('demographics.csv', 'r') as file:
-            reader = csv.reader(file)
-            for row in reader:
-                rows.append(row)
-        
-        print("ROWS ARRAY CONTENT:", rows)
-        found = False
-        print("Session ID to find:", session_id)
-        for row in rows:
-            print("We are at row:", row)
-            if row[0] == session_id:
-                print("Session ID found in row:", row[0])
-                found = True
-                row.append(question)
-                row.append(answer)
-                row.append(time_taken)
-                break
+            return JsonResponse({'status': 'success'})
 
-        if not found:
-            new_row = [question, answer, time_taken]
-            rows.append(new_row)
+        else:
+            return JsonResponse({'status': 'failure', 'message': 'Session ID not found'}, status=400)
 
-        with open('demographics.csv', 'w') as file:
-            writer = csv.writer(file)
-            for row in rows:
-                writer.writerow(row)
-
-        return JsonResponse({'status': 'success'})
-
-    return JsonResponse({'status': 'failure'}, status=400)
-
+    return JsonResponse({'status': 'failure', 'message': 'Invalid request method'}, status=400)
