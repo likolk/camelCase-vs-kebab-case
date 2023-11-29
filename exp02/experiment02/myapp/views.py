@@ -52,8 +52,8 @@ def save_response(request):
 
         if demographics_instance:
             # append new response data to existing fields plus a spearator
-            demographics_instance.questions += question + '|'
-            demographics_instance.answers += answer + '|'
+            demographics_instance.questions += question + ','
+            demographics_instance.answers += answer + ','
             demographics_instance.time_taken += time_taken
             demographics_instance.save()
 
