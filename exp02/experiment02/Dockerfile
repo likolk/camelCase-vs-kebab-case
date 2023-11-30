@@ -4,10 +4,9 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
 
-# Copy the entire directory into the container
+# copy the entire directory into the container
 COPY . /app
 
-# Install Django (assuming dependencies are installed)
 RUN pip install --upgrade pip && \
     pip install django &&  \
     pip install psycopg2  

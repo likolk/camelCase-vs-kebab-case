@@ -63,3 +63,12 @@ def save_response(request):
             return JsonResponse({'status': 'failure', 'message': 'Session ID not found'}, status=400)
 
     return JsonResponse({'status': 'failure', 'message': 'Invalid request method'}, status=400)
+
+import subprocess
+
+def compile_postgresqlToCSV(request):
+    try:
+        subprocess.run(["python", "postgresqlToCSV.py"])
+        return JsonResponse({'message': 'Script executed successfully'})
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)

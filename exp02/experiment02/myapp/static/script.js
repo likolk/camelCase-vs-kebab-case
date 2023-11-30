@@ -234,10 +234,34 @@ function nextQuestion() {
             allowClickOutside: true,
             confirmButtonText: "Go to Home Page",
         }).then(() => {
+            console.log("calling compile")
+            compilePostgresql()
             window.location.href = "/demographics/"
+
+            
         })
+
     }
 }
+ 
+function compilePostgresql() {
+    console.log("called compile")
+    fetch('/compile-postgresqlToCSV/', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("data", data)
+    })
+    .catch(error => {
+        console.error('Error compiling PostgreSQL:', error);
+    });
+    console.log("Finito");
+}
+
 
 function startTimer() {
     startTime = new Date();
