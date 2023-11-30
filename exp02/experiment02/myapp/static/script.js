@@ -9,46 +9,46 @@ const questions = [
         identifiers: ['move-northern', 'move-north', 'move-nprth', 'move-borth'],
         correctAnswer: 'move-north'
     },
-    // {
-    //     sentence: "pass experimentation and evaluation course",
-    //     identifiers: ['pass-experimentation-and-evaluation-course', 'pass-experimentation-and-evaluation-curse', 'pass-experimentation-and-evaluation-coarse', 'oass-experimentation-and-evaluation-course'],
-    //     correctAnswer: 'pass-experimentation-and-evaluation-course'
-    // },
-    // {
-    //     sentence: "eat lunch at mensa",
-    //     identifiers: ['eat-lunch-at-mensa', 'eat-lanch-at-mensa', 'eat-launch-at-mensa', 'it-lunch-at-mensa'],
-    //     correctAnswer: 'eat-lunch-at-mensa'
-    // },
-    // {
-    //     sentence: "Università della Svizzera italiana",
-    //     identifiers: ['universitàDellaSvizzerataliana', 'universitàDellaSvizzeraItaliano', 'universitàDellaSvizzeraItaliana', 'universitàDellaSvizzeraItaliama'],
-    //     correctAnswer: 'universitàDellaSvizzeraItaliana'
-    // },
-    // {
-    //     sentence: "180 ECTS",
-    //     identifiers: ['18O-ECTS', '180-ECTS', '180-ETCS', '780-ECTS'],
-    //     correctAnswer: '180-ECTS'
-    // },
-    // {
-    //     sentence: "I am a university student",
-    //     identifiers: ['iAmAnUniversityStudent', 'iAmAUniversityStudent', 'AmAUniversityStudent', 'iAmUniversityStudent'],
-    //     correctAnswer: 'iAmAUniversityStudent'
-    // },
-    // {
-    //     sentence: "tomorrow it is gonna be rainy",
-    //     identifiers: ['tomorrowItIsGonnaBeRany', 'tomorrowItIsGonneBeRainy', 'tomorrowItIsGonnaBeRaney', 'tomorrowItIsGonnaBeRainy'],
-    //     correctAnswer: 'tomorrowItIsGonnaBeRainy'
-    // }, 
-    // {
-    //     sentence: "Looking forward to the Christmas Holidays",
-    //     identifiers: ['lokingForwardToTheChristmasHolidays', 'lookingForwardToTheChristmasHoliday', 'lookingForwardToTheChristmasHolidays', 'lookingForwardToTheChristmasHollidays'],
-    //     correctAnswer: 'lookingForwardToTheChristmasHolidays'  
-    // },
-    // {
-    //     sentence: "This is the last sentence",
-    //     identifiers: ['this-the-last-sentence', 'this-is-the-last-sentence', 'this-is-the-last-sentences', 'these-is-the-last-sentence'],
-    //     correctAnswer: 'this-is-the-last-sentence'
-    // }
+    {
+        sentence: "pass experimentation and evaluation course",
+        identifiers: ['pass-experimentation-and-evaluation-course', 'pass-experimentation-and-evaluation-curse', 'pass-experimentation-and-evaluation-coarse', 'oass-experimentation-and-evaluation-course'],
+        correctAnswer: 'pass-experimentation-and-evaluation-course'
+    },
+    {
+        sentence: "eat lunch at mensa",
+        identifiers: ['eat-lunch-at-mensa', 'eat-lanch-at-mensa', 'eat-launch-at-mensa', 'it-lunch-at-mensa'],
+        correctAnswer: 'eat-lunch-at-mensa'
+    },
+    {
+        sentence: "Università della Svizzera italiana",
+        identifiers: ['universitàDellaSvizzerataliana', 'universitàDellaSvizzeraItaliano', 'universitàDellaSvizzeraItaliana', 'universitàDellaSvizzeraItaliama'],
+        correctAnswer: 'universitàDellaSvizzeraItaliana'
+    },
+    {
+        sentence: "180 ECTS",
+        identifiers: ['18O-ECTS', '180-ECTS', '180-ETCS', '780-ECTS'],
+        correctAnswer: '180-ECTS'
+    },
+    {
+        sentence: "I am a university student",
+        identifiers: ['iAmAnUniversityStudent', 'iAmAUniversityStudent', 'AmAUniversityStudent', 'iAmUniversityStudent'],
+        correctAnswer: 'iAmAUniversityStudent'
+    },
+    {
+        sentence: "tomorrow it is gonna be rainy",
+        identifiers: ['tomorrowItIsGonnaBeRany', 'tomorrowItIsGonneBeRainy', 'tomorrowItIsGonnaBeRaney', 'tomorrowItIsGonnaBeRainy'],
+        correctAnswer: 'tomorrowItIsGonnaBeRainy'
+    }, 
+    {
+        sentence: "Looking forward to the Christmas Holidays",
+        identifiers: ['lokingForwardToTheChristmasHolidays', 'lookingForwardToTheChristmasHoliday', 'lookingForwardToTheChristmasHolidays', 'lookingForwardToTheChristmasHollidays'],
+        correctAnswer: 'lookingForwardToTheChristmasHolidays'  
+    },
+    {
+        sentence: "This is the last sentence",
+        identifiers: ['this-the-last-sentence', 'this-is-the-last-sentence', 'this-is-the-last-sentences', 'these-is-the-last-sentence'],
+        correctAnswer: 'this-is-the-last-sentence'
+    }
 
 
 

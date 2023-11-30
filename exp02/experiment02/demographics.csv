@@ -15,3 +15,4 @@
 (56, 'female', 'masters', 'engineer', 'spese', 'move south,move north,', 'moveSouth,move-north,', 2.028, '2aff9cba-6d42-4e26-82b0-04bb4ea95445')
 (46, 'other', 'high-school', 'student', 'well', 'move south,move north,', 'moveSouth,move-north,', 1.337, '4e86eff8-eb37-4081-818c-6d9f9709dd5d')
 (47, 'other', 'bachelors', 'student', '434334434343', 'move north,move south,', 'move-north,moveSouth,', 2.1550000000000002, 'da6c0cbb-159e-4908-acf3-d418269245ee')
+(57, 'female', 'masters', 'engineer', 'likollari', 'move south,move north,', 'moveSouth,move-north,', 2.222, 'e9dd7428-41ea-4d8c-9fa8-c48f6b87b9e9')

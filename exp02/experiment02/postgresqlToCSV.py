@@ -7,11 +7,11 @@ load_dotenv()
 
 # connect to the database
 conn = psycopg2.connect(
-    host=os.getenv("HOST"),
-    database= os.getenv("NAME"),
-    user=os.getenv("USER"),
-    password=os.getenv("PASSWORD"),
-    port=os.getenv("PORT"),
+    host="dpg-cljgru6g1b2c73apkn90-a.frankfurt-postgres.render.com",
+    database= "exp02",
+    user= "kelvin",
+    password="8r9aws8VsQyRxv3a9vcqB9PFcA6VUKYz",
+    port="5432"
 )
 
 # create a cursor
