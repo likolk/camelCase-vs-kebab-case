@@ -1,9 +1,9 @@
 # this file will be used to export the postgresql table onto a csv file, as required.
 import psycopg2, csv
-from dotenv import load_dotenv
-import os
+# from dotenv import load_dotenv
+# import os
 
-load_dotenv()
+# load_dotenv()
 
 # connect to the database
 conn = psycopg2.connect(
