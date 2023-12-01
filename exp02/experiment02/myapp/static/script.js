@@ -47,7 +47,7 @@ const questions = [
     {
         sentence: "This is a sentence",
         identifiers: ['this-a-sentence', 'this-is-a-sentence', 'this-is-a-sentences', 'these-a-is-sentence'],
-        correctAnswer: 'this-is-the-last-sentence'
+        correctAnswer: 'this-is-a-sentence'
     }
 ]
 
@@ -233,7 +233,7 @@ function nextQuestion() {
         }).then(() => {
             console.log("calling compile")
             compilePostgresql()
-            window.location.href = "/demographics/"
+            window.location.href = "/"
 
             
         })
