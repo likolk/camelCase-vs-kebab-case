@@ -62,6 +62,8 @@ let interval;
 
 let shownQuestions = []
 
+let timeTakenToAnswerEachQuestion = []
+
 
 const questionContainer = document.getElementById('questionContainer');
 
@@ -79,7 +81,9 @@ function displayFirstQuestion() {
     shownQuestions.push(selectedQuestion)
     const { sentence, identifiers } = selectedQuestion;
 
-    const optionsHTML = identifiers.map(identifier => `
+    const shuffled_identifiers = shuffle_responses(identifiers);
+
+    const optionsHTML = shuffled_identifiers.map(identifier => `
         <button class="option" value="${identifier}">${identifier}</button>
     `).join('');
 
@@ -105,10 +109,12 @@ function displayFirstQuestion() {
                 const endTime = new Date();
                 const timeTaken = (endTime - startTime) / 1000;
                 totalTimeTaken += timeTaken;
+                timeTakenToAnswerEachQuestion.push(timeTaken);
                 console.log("Time taken for question 1:", timeTaken);
                 console.log("TOTAL TIME TAKEN UNTIL NOW:", totalTimeTaken)
                 Swal.fire({
                     title: "Your answer is correct ",
+                    text: `You took ${timeTaken} seconds to answer correctly this question`,
                     icon: "success",
                     timer: 10000,
                     timerProgressBar: true,
@@ -122,6 +128,7 @@ function displayFirstQuestion() {
                     console.log("response should be saved")
                     nextQuestion();
                 })
+                timeTaken = 0;
             } else {
                 Swal.fire({
                     title: "Your answer is not correct ",
@@ -147,7 +154,8 @@ function displayQuestion(index) {
     const selectedQuestion = questions[index];
     const { sentence, identifiers } = selectedQuestion;
     shownQuestions.push(selectedQuestion)
-    const optionsHTML = identifiers.map(identifier => `
+    const shuffled_identifiers = shuffle_responses(identifiers);
+    const optionsHTML = shuffled_identifiers.map(identifier => `
         <button class="option" value="${identifier}">${identifier}</button>
     `).join('');
 
@@ -173,10 +181,12 @@ function displayQuestion(index) {
                 const endTime = new Date();
                 const timeTaken = (endTime - startTime) / 1000;
                 totalTimeTaken += timeTaken;
+                timeTakenToAnswerEachQuestion.push(timeTaken);
                 console.log(`Time taken for question ${selectedAnswer}`, timeTaken);
                 console.log("TOTAL TIME TAKEN UNTIL NOW:", totalTimeTaken)
                 Swal.fire({
                     title: "Your answer is correct ",
+                    text: `You took ${timeTaken} seconds to answer correctly this question`,
                     icon: "success",
                     timer: 10000,
                     timerProgressBar: true,
@@ -192,6 +202,7 @@ function displayQuestion(index) {
                     console.log("response should be saved")
                     nextQuestion();
                 })
+                timeTaken = 0;
             } else {
                 Swal.fire({
                     title: "Your answer is not correct ",
@@ -325,6 +336,20 @@ function sendResponseToServer(session_id, question, answer, timeTaken) {
     .catch(error => {
         console.error('Error saving response:', error);
     });
+}
+
+
+function shuffle_responses(responses) {
+    let currentIndex = responses.length;
+    let randomIndex;
+    // while there are still elements to shuffle
+    while (currentIndex > 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex)
+        currentIndex -= 1;
+        // swap it with the current element
+        [responses[currentIndex], responses[randomIndex]] = [responses[randomIndex], responses[currentIndex]]
+    }
+    return responses;
 }
 
 
