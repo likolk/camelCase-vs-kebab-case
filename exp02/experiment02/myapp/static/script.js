@@ -45,13 +45,10 @@ const questions = [
         correctAnswer: 'lookingForwardToTheChristmasHolidays'  
     },
     {
-        sentence: "This is the last sentence",
-        identifiers: ['this-the-last-sentence', 'this-is-the-last-sentence', 'this-is-the-last-sentences', 'these-is-the-last-sentence'],
+        sentence: "This is a sentence",
+        identifiers: ['this-a-sentence', 'this-is-a-sentence', 'this-is-a-sentences', 'these-a-is-sentence'],
         correctAnswer: 'this-is-the-last-sentence'
     }
-
-
-
 ]
 
 
