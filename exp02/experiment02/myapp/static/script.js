@@ -105,13 +105,16 @@ function displayFirstQuestion() {
             console.log(`Selected answer: ${selectedAnswer}`);
             const isCorrect = selectedAnswer === selectedQuestion.correctAnswer;
             console.log(`Is Correct? ${isCorrect}`);
+            const endTime = new Date();
+            const timeTaken = (endTime - startTime) / 1000;
+            totalTimeTaken += timeTaken;
+            timeTakenToAnswerEachQuestion.push(timeTaken);
+            console.log("Time taken for question 1:", timeTaken);
+            console.log("TOTAL TIME TAKEN UNTIL NOW:", totalTimeTaken)
+            console.log("saving response")
+            sendResponseToServer(session_id, selectedQuestion.sentence, selectedAnswer, timeTaken, isCorrect);
+            console.log("response should be saved")
             if (isCorrect) {
-                const endTime = new Date();
-                const timeTaken = (endTime - startTime) / 1000;
-                totalTimeTaken += timeTaken;
-                timeTakenToAnswerEachQuestion.push(timeTaken);
-                console.log("Time taken for question 1:", timeTaken);
-                console.log("TOTAL TIME TAKEN UNTIL NOW:", totalTimeTaken)
                 Swal.fire({
                     title: "Your answer is correct ",
                     text: `You took ${timeTaken} seconds to answer correctly this question`,
@@ -123,9 +126,7 @@ function displayFirstQuestion() {
                     confirmButtonColor: 'green',
                     allowClickOutside: true,
                 }).then(() => {
-                    console.log("saving response")
-                    sendResponseToServer(session_id, selectedQuestion.sentence, selectedAnswer, timeTaken);
-                    console.log("response should be saved")
+                    startTimer()
                     nextQuestion();
                 })
                 timeTaken = 0;
@@ -139,7 +140,11 @@ function displayFirstQuestion() {
                     grow: true,
                     allowClickOutside: true,
                     confirmButtonColor: 'green',
-                });
+                }).then(() => {
+                    startTimer()
+                    nextQuestion();
+                })
+                timeTaken = 0;
             }
         });
     });
@@ -177,13 +182,16 @@ function displayQuestion(index) {
             console.log(`Selected answer: ${selectedAnswer}`);
             const isCorrect = selectedAnswer === selectedQuestion.correctAnswer;
             console.log(`Is Correct? ${isCorrect}`);
+            const endTime = new Date();
+            const timeTaken = (endTime - startTime) / 1000;
+            totalTimeTaken += timeTaken;
+            timeTakenToAnswerEachQuestion.push(timeTaken);
+            console.log(`Time taken for question ${selectedAnswer}`, timeTaken);
+            console.log("TOTAL TIME TAKEN UNTIL NOW:", totalTimeTaken)
+            console.log("saving response")
+            sendResponseToServer(session_id, selectedQuestion.sentence, selectedAnswer, timeTaken, isCorrect);
+            console.log("response should be saved")
             if (isCorrect) {
-                const endTime = new Date();
-                const timeTaken = (endTime - startTime) / 1000;
-                totalTimeTaken += timeTaken;
-                timeTakenToAnswerEachQuestion.push(timeTaken);
-                console.log(`Time taken for question ${selectedAnswer}`, timeTaken);
-                console.log("TOTAL TIME TAKEN UNTIL NOW:", totalTimeTaken)
                 Swal.fire({
                     title: "Your answer is correct ",
                     text: `You took ${timeTaken} seconds to answer correctly this question`,
@@ -196,10 +204,6 @@ function displayQuestion(index) {
                     allowClickOutside: true,
                 }).then(() => {
                     startTimer()
-                    console.log("since correct, calling next")
-                    console.log("saving response")
-                    sendResponseToServer(session_id, selectedQuestion.sentence, selectedAnswer, timeTaken);
-                    console.log("response should be saved")
                     nextQuestion();
                 })
                 timeTaken = 0;
@@ -213,7 +217,10 @@ function displayQuestion(index) {
                     grow: true,
                     allowClickOutside: true,
                     confirmButtonColor: 'green',
-                });
+                }).then(() => {
+                    startTimer()
+                    nextQuestion();
+                })
             }
         });
     });
@@ -308,7 +315,7 @@ window.onload = () => {
 
 
 
-function sendResponseToServer(session_id, question, answer, timeTaken) {
+function sendResponseToServer(session_id, question, answer, timeTaken, isCorrect) {
     // get the session id generated in the python file
 
     fetch('/save-response/', {
@@ -321,7 +328,8 @@ function sendResponseToServer(session_id, question, answer, timeTaken) {
             session_id:  session_id,
             question: question,
             answer: answer,
-            time_taken: timeTaken
+            time_taken: timeTaken,
+            is_correct: isCorrect,
         })
     })
     .then(response => {

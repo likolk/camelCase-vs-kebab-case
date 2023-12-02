@@ -25,6 +25,7 @@ class Demographics(models.Model):
     comments = models.TextField(blank=True)
     questions = models.TextField(blank=True)
     answers = models.TextField(blank=True)
+    is_correct = models.TextField(blank=True)
     time_taken = models.TextField(blank=True)
 
     def __str__(self):

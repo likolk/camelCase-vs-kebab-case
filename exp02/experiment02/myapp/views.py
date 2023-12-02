@@ -46,6 +46,7 @@ def save_response(request):
         question = data.get('question')
         answer = data.get('answer')
         time_taken = data.get('time_taken')
+        is_correct = data.get('is_correct')
 
         # retrieve the Demographics entry based on the session_id
         demographics_instance = Demographics.objects.filter(session_id=session_id).first()
@@ -55,6 +56,7 @@ def save_response(request):
             demographics_instance.questions += question + ','
             demographics_instance.answers += answer + ','
             demographics_instance.time_taken += str(time_taken) + ', '  
+            demographics_instance.is_correct += str(is_correct) + ', '
             demographics_instance.save()
 
             return JsonResponse({'status': 'success'})
