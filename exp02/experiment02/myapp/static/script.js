@@ -329,7 +329,7 @@ function sendResponseToServer(session_id, question, answer, timeTaken, isCorrect
             question: question,
             answer: answer,
             time_taken: timeTaken,
-            is_correct: isCorrect,
+            is_correct: isCorrect
         })
     })
     .then(response => {

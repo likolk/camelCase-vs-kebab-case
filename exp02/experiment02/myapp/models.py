@@ -22,6 +22,11 @@ class Demographics(models.Model):
         ('engineer', 'Engineer'),
         ('teacher', 'Teacher')
     ])
+    experience = models.CharField(max_length=20, choices=[
+        ('beginner', 'Beginner'),
+        ('intermediate', 'Intermediate'),
+        ('advanced', 'Advanced')
+    ] )
     comments = models.TextField(blank=True)
     questions = models.TextField(blank=True)
     answers = models.TextField(blank=True)

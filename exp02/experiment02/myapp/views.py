@@ -23,6 +23,7 @@ def submitDemographics(request):
         education = request.POST.get('education')
         occupation = request.POST.get('occupation')
         comments = request.POST.get('comments')
+        experience = request.POST.get('experience')
 
         session_id = str(uuid.uuid4())
 
@@ -33,6 +34,7 @@ def submitDemographics(request):
         d.gender = gender
         d.education = education
         d.occupation = occupation
+        d.experience = experience
         d.comments = comments
         d.save()
         return redirect(reverse('questions') + f'?session_id={session_id}')

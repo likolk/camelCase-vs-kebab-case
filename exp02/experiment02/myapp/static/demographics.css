@@ -9,8 +9,8 @@ body {
 .container {
     width: 80%;
     margin: 20px auto;
-    padding: 30px;
-    background-color: #ffffff;
+    padding: 5px;
+    background-color: #ffffff00;
     border-radius: 15px;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
 }
@@ -143,6 +143,7 @@ button {
     transition: background-color 0.3s ease-in-out;
     display: block;
     margin: 0 auto;
+    text-align: center;
 }
 
 .button-container {
@@ -156,6 +157,6 @@ button {
     padding: 20px;
     background-color: #008080;
     color: white;
-    margin-top: 30px;
+    margin-top: 50px;
     border-radius: 0 0 15px 15px;
 }
