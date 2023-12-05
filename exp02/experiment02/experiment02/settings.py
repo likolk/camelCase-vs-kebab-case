@@ -30,9 +30,10 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "camelkebabexperiment.onrender.com",
     "oktesting.onrender.com",
-    ".onrender.com",
     "exp02-likollari.onrender.com",
-    "https://exp02-likollari.onrender.com"
+    'exp02likollari.onrender.com',
+    ".onrender.com"
+    
 ]
 
 
@@ -65,6 +66,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://oktesting.onrender.com',
     'https://camelkebabexperiment.onrender.com',
     'https://exp02-likollari.onrender.com',
+    'https://exp02likollari.onrender.com',
+    
 ]
 
 ROOT_URLCONF = "experiment02.urls"
