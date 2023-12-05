@@ -255,6 +255,8 @@ function nextQuestion() {
             compilePostgresql()
             window.location.href = "/"   
         })
+        console.log("going to call download csv")
+        downloadCSVLocally()
     }
 }
  
@@ -359,4 +361,22 @@ function shuffle_responses(responses) {
     return responses;
 }
 
+
+function downloadCSVLocally() {
+    console.log("called downloadCSVLocally")
+    fetch('/download-csv/', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("data", data)
+    })
+    .catch(error => {
+        console.error('Error compiling PostgreSQL:', error);
+    });
+    console.log("Finito");
+}
 

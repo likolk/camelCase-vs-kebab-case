@@ -5,6 +5,8 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 import json
 from django.urls import reverse
 from .models import Demographics
+import psycopg2
+import csv
 
 def index(request):
     return render(request, 'index.html')
@@ -68,3 +70,52 @@ def compile_postgresqlToCSV(request):
         return JsonResponse({'message': 'Script executed successfully'})
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
+    
+
+def download_csv(request):
+    try:
+        conn = psycopg2.connect(
+            host="dpg-clniht5e89qs739ga8jg-a.frankfurt-postgres.render.com",
+            database="exp02_emd1",
+            user="kelvin",
+            password="sKiMWw1Lfiy1Zr2EcFFlCMEhw8bBS0Vz",
+            port="5432"
+        )
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT * FROM myapp_demographics")
+
+        rows = cursor.fetchall()
+
+        # Get column names
+        column_names = [desc[0] for desc in cursor.description]
+
+        # Prepare CSV data
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename=demographics.csv'
+
+        csv_writer = csv.writer(response)
+        
+        # Write headers
+        csv_writer.writerow(column_names)
+
+        # Write rows
+        csv_writer.writerows(rows)
+
+        return response
+
+    except psycopg2.Error as e:
+        print("Error occurred while connecting to PostgreSQL:", e)
+
+    finally:
+        try:
+            if cursor:
+                cursor.close()
+        except NameError:
+            pass  
+
+        try:
+            if conn:
+                conn.close()
+        except NameError:
+            pass
