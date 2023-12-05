@@ -1,4 +1,5 @@
 import psycopg2
+import csv
 
 try:
     conn = psycopg2.connect(
@@ -9,13 +10,17 @@ try:
         port="5432"
     )
 
+
     cursor = conn.cursor()
 
     cursor.execute("SELECT * FROM myapp_demographics")
 
-    with open('demographics.csv', 'w') as f:
-        for row in cursor:
-            f.write("%s\n" % str(row))
+    rows = cursor.fetchall()
+
+    with open('demographics.csv', 'w', newline='') as f:
+        csv_writer = csv.writer(f)
+        csv_writer.writerow([desc[0] for desc in cursor.description])  
+        csv_writer.writerows(rows)  
 
     print("CSV file created/updated successfully!")
 
