@@ -9,46 +9,46 @@ const questions = [
         identifiers: ['i-am-a-student', 'i-am-an-student', 'i-am-a-studend', 'i-am-a-studend'],
         correctAnswer: 'i-am-a-student'
     },
-    {
-        sentence: "experimentation and evaluation course",
-        identifiers: ['experimentation-and-evaluation-curse','experimentation-and-evaluation-course', 'experimentation-and-evaluation-coarse', 'experinentation-and-evaluation-course'],
-        correctAnswer: 'experimentation-and-evaluation-course'
-    },
-    {
-        sentence: "eat lunch at mensa",
-        identifiers: ['eat-lunch-at-mensa', 'eat-lanch-at-mensa', 'eat-launch-at-mensa', 'it-lunch-at-mensa'],
-        correctAnswer: 'eat-lunch-at-mensa'
-    },
-    {
-        sentence: "Università della Svizzera italiana",
-        identifiers: ['universitàDellaSvizzerataliana', 'universitàDellaSvizzeraItaliano', 'universitàDellaSvizzeraItaliana', 'universitàDellaSvizzeraItaliama'],
-        correctAnswer: 'universitàDellaSvizzeraItaliana'
-    },
-    {
-        sentence: "180 ECTS",
-        identifiers: ['18O-ECTS', '180-ECTS', '180-ETCS', '780-ECTS'],
-        correctAnswer: '180-ECTS'
-    },
-    {
-        sentence: "I am a university student",
-        identifiers: ['iAmAnUniversityStudent', 'iAmAUniversityStudent', 'AmAUniversityStudent', 'iAmUniversityStudent'],
-        correctAnswer: 'iAmAUniversityStudent'
-    },
-    {
-        sentence: "tomorrow it is gonna be rainy",
-        identifiers: ['tomorrowItIsGonnaBeRany', 'tomorrowItIsGonneBeRainy', 'tomorrowItIsGonnaBeRaney', 'tomorrowItIsGonnaBeRainy'],
-        correctAnswer: 'tomorrowItIsGonnaBeRainy'
-    }, 
-    {
-        sentence: "Looking forward to the Christmas Holidays",
-        identifiers: ['lokingForwardToTheChristmasHolidays', 'lookingForwardToTheChristmasHoliday', 'lookingForwardToTheChristmasHolidays', 'lookingForwardToTheChristmasHollidays'],
-        correctAnswer: 'lookingForwardToTheChristmasHolidays'  
-    },
-    {
-        sentence: "This is a sentence",
-        identifiers: ['this-a-sentence', 'this-is-a-sentence', 'this-is-a-sentences', 'these-a-is-sentence'],
-        correctAnswer: 'this-is-a-sentence'
-    }
+    // {
+    //     sentence: "experimentation and evaluation course",
+    //     identifiers: ['experimentation-and-evaluation-curse','experimentation-and-evaluation-course', 'experimentation-and-evaluation-coarse', 'experinentation-and-evaluation-course'],
+    //     correctAnswer: 'experimentation-and-evaluation-course'
+    // },
+    // {
+    //     sentence: "eat lunch at mensa",
+    //     identifiers: ['eat-lunch-at-mensa', 'eat-lanch-at-mensa', 'eat-launch-at-mensa', 'it-lunch-at-mensa'],
+    //     correctAnswer: 'eat-lunch-at-mensa'
+    // },
+    // {
+    //     sentence: "Università della Svizzera italiana",
+    //     identifiers: ['universitàDellaSvizzerataliana', 'universitàDellaSvizzeraItaliano', 'universitàDellaSvizzeraItaliana', 'universitàDellaSvizzeraItaliama'],
+    //     correctAnswer: 'universitàDellaSvizzeraItaliana'
+    // },
+    // {
+    //     sentence: "180 ECTS",
+    //     identifiers: ['18O-ECTS', '180-ECTS', '180-ETCS', '780-ECTS'],
+    //     correctAnswer: '180-ECTS'
+    // },
+    // {
+    //     sentence: "I am a university student",
+    //     identifiers: ['iAmAnUniversityStudent', 'iAmAUniversityStudent', 'AmAUniversityStudent', 'iAmUniversityStudent'],
+    //     correctAnswer: 'iAmAUniversityStudent'
+    // },
+    // {
+    //     sentence: "tomorrow it is gonna be rainy",
+    //     identifiers: ['tomorrowItIsGonnaBeRany', 'tomorrowItIsGonneBeRainy', 'tomorrowItIsGonnaBeRaney', 'tomorrowItIsGonnaBeRainy'],
+    //     correctAnswer: 'tomorrowItIsGonnaBeRainy'
+    // }, 
+    // {
+    //     sentence: "Looking forward to the Christmas Holidays",
+    //     identifiers: ['lokingForwardToTheChristmasHolidays', 'lookingForwardToTheChristmasHoliday', 'lookingForwardToTheChristmasHolidays', 'lookingForwardToTheChristmasHollidays'],
+    //     correctAnswer: 'lookingForwardToTheChristmasHolidays'  
+    // },
+    // {
+    //     sentence: "This is a sentence",
+    //     identifiers: ['this-a-sentence', 'this-is-a-sentence', 'this-is-a-sentences', 'these-a-is-sentence'],
+    //     correctAnswer: 'this-is-a-sentence'
+    // }
 ]
 
 
@@ -140,11 +140,12 @@ function displayFirstQuestion() {
                     grow: true,
                     allowClickOutside: true,
                     confirmButtonColor: 'green',
-                }).then(() => {
-                    startTimer()
-                    nextQuestion();
                 })
-                timeTaken = 0;
+                // .then(() => {
+                    // startTimer()
+                    // nextQuestion();
+                // })
+                // timeTaken = 0;
             }
         });
     });
@@ -217,10 +218,11 @@ function displayQuestion(index) {
                     grow: true,
                     allowClickOutside: true,
                     confirmButtonColor: 'green',
-                }).then(() => {
-                    startTimer()
-                    nextQuestion();
                 })
+                // .then(() => {
+                //     startTimer()
+                //     nextQuestion();
+                // })
             }
         });
     });

@@ -32,10 +32,10 @@ finally:
         if cursor:
             cursor.close()
     except NameError:
-        pass  # Cursor was not defined
+        pass  
 
     try:
         if conn:
             conn.close()
     except NameError:
-        pass  # Connection was not defined
+        pass 
