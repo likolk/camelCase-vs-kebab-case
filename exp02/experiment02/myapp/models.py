@@ -5,27 +5,9 @@ from django.db import models
 class Demographics(models.Model):    
     session_id = models.UUIDField(primary_key=True)
     age = models.IntegerField()
-    gender = models.CharField(max_length=10, choices=[
-        ('male', 'Male'),
-        ('female', 'Female'),
-        ('other', 'Other')
-    ])
-    education = models.CharField(max_length=20, choices=[
-        ('high-school', 'High School'),
-        ('bachelors', 'Bachelors'),
-        ('masters', 'Masters'),
-        ('phd', 'PhD'),
-        ('postdoc', 'Postdoc')
-    ])
-    occupation = models.CharField(max_length=20, choices=[
-        ('student', 'Student'),
-        ('engineer', 'Engineer'),
-        ('teacher', 'Teacher')
-    ])
     experience = models.CharField(max_length=20, choices=[
-        ('beginner', 'Beginner'),
-        ('intermediate', 'Intermediate'),
-        ('advanced', 'Advanced')
+        ('yes', 'Yes'),
+        ('no', 'No'),
     ] )
     comments = models.TextField(blank=True)
     questions = models.TextField(blank=True)

@@ -19,21 +19,13 @@ def questions(request):
 def submitDemographics(request):
     if request.method == 'POST':
         age = request.POST.get('age')
-        gender = request.POST.get('gender')
-        education = request.POST.get('education')
-        occupation = request.POST.get('occupation')
         comments = request.POST.get('comments')
         experience = request.POST.get('experience')
-
         session_id = str(uuid.uuid4())
-
         # Create a new entry in the Demographics model
         d = Demographics()
         d.session_id = session_id
         d.age = age
-        d.gender = gender
-        d.education = education
-        d.occupation = occupation
         d.experience = experience
         d.comments = comments
         d.save()
