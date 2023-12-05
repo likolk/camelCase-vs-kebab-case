@@ -1,18 +1,18 @@
 const questions = [
     {
-        sentence: 'move south',
-        identifiers: ['moveSource', 'moveSouth', 'moreSouth', 'moverSound'],
-        correctAnswer: 'moveSouth'
+        sentence: 'i have no idea',
+        identifiers: ['iHaveN0Idea', '1HaveNoIdea', 'iHaveNoIdea', 'iHaveIdea'],
+        correctAnswer: 'iHaveNoIdea'
     },
     {
-        sentence: 'move north',
-        identifiers: ['move-northern', 'move-north', 'move-nprth', 'move-borth'],
-        correctAnswer: 'move-north'
+        sentence: 'i am a student',
+        identifiers: ['i-am-a-student', 'i-am-an-student', 'i-am-a-studend', 'i-am-a-studend'],
+        correctAnswer: 'i-am-a-student'
     },
     {
-        sentence: "pass experimentation and evaluation course",
-        identifiers: ['pass-experimentation-and-evaluation-course', 'pass-experimentation-and-evaluation-curse', 'pass-experimentation-and-evaluation-coarse', 'oass-experimentation-and-evaluation-course'],
-        correctAnswer: 'pass-experimentation-and-evaluation-course'
+        sentence: "experimentation and evaluation course",
+        identifiers: ['experimentation-and-evaluation-curse','experimentation-and-evaluation-course', 'experimentation-and-evaluation-coarse', 'experinentation-and-evaluation-course'],
+        correctAnswer: 'experimentation-and-evaluation-course'
     },
     {
         sentence: "eat lunch at mensa",
