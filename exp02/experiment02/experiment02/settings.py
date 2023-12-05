@@ -32,6 +32,7 @@ ALLOWED_HOSTS = [
     "oktesting.onrender.com",
     ".onrender.com",
     "exp02-likollari.onrender.com",
+    "https://exp02-likollari.onrender.com"
 ]
 
 
@@ -62,7 +63,8 @@ MIDDLEWARE = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://oktesting.onrender.com',
-    'https://camelkebabexperiment.onrender.com'
+    'https://camelkebabexperiment.onrender.com',
+    'https://exp02-likollari.onrender.com',
 ]
 
 ROOT_URLCONF = "experiment02.urls"
@@ -101,11 +103,11 @@ WSGI_APPLICATION = "experiment02.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'exp02',  # Your PostgreSQL database name
-        'USER': 'kelvin',  # Your PostgreSQL username
-        'PASSWORD': '8r9aws8VsQyRxv3a9vcqB9PFcA6VUKYz',  # Your PostgreSQL password
-        'HOST': 'dpg-cljgru6g1b2c73apkn90-a.frankfurt-postgres.render.com',  # Hostname/address
-        'PORT': '5432',  # PostgreSQL port
+        'NAME': 'exp02',  
+        'USER': 'kelvin', 
+        'PASSWORD': '8r9aws8VsQyRxv3a9vcqB9PFcA6VUKYz', 
+        'HOST': 'dpg-cljgru6g1b2c73apkn90-a.frankfurt-postgres.render.com',  
+        'PORT': '5432',  
     }
 }
 
