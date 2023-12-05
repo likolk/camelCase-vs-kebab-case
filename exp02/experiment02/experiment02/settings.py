@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [
     "camelkebabexperiment.onrender.com",
     "oktesting.onrender.com",
     ".onrender.com",
+    "exp02-likollari.onrender.com",
 ]
 
 
