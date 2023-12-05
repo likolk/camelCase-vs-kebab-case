@@ -29,11 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "camelkebabexperiment.onrender.com",
-    "oktesting.onrender.com",
-    "exp02-likollari.onrender.com",
     'exp02likollari.onrender.com',
-    ".onrender.com"
     
 ]
 
