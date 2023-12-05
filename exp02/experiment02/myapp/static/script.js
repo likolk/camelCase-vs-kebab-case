@@ -141,11 +141,6 @@ function displayFirstQuestion() {
                     allowClickOutside: true,
                     confirmButtonColor: 'green',
                 })
-                // .then(() => {
-                    // startTimer()
-                    // nextQuestion();
-                // })
-                // timeTaken = 0;
             }
         });
     });
@@ -243,7 +238,7 @@ function nextQuestion() {
             title: "Congratulations! You have succesfully completed the experiment",
             text: `You took ${totalTimeTaken} seconds to answer all questions`,
             icon: "success",
-            timer: 10000,
+            timer: 100000,
             timerProgressBar: true,
             showConfirmButton: true,
             grow: true,
@@ -252,11 +247,12 @@ function nextQuestion() {
             confirmButtonText: "Go to Home Page",
         }).then(() => {
             console.log("calling compile")
-            // compilePostgresql()
+            compilePostgresql()
             window.location.href = "/"   
         })
+        window.location.href="/download-csv"
         console.log("going to call download csv")
-        downloadCSVLocally()
+        // downloadCSVLocally()
     }
 }
  
@@ -367,7 +363,7 @@ function downloadCSVLocally() {
     fetch('/download-csv/', {
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/csv'
         }
     })
     .then(response => response.json())
