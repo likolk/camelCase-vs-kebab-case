@@ -236,6 +236,7 @@ function nextQuestion() {
             displayQuestion(randomQuestionIndex);
         }
     } else {
+        compilePostgresql()
         totalTimeTaken = totalTimeTaken.toFixed(2);
         Swal.fire({
             title: "Congratulations! You have succesfully completed the experiment",
@@ -250,7 +251,8 @@ function nextQuestion() {
             confirmButtonText: "Go to Home Page",
         }).then(() => {
             console.log("calling compile")
-            compilePostgresql()
+            // TODO: the problem might be here, not being called on time.
+            // compilePostgresql()
             window.location.href = "/"
 
             

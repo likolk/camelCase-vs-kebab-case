@@ -7,7 +7,7 @@ import psycopg2, csv
 
 # connect to the database
 conn = psycopg2.connect(
-    host="dpg-cljgru6g1b2c73apkn90-a",
+    host="dpg-cljgru6g1b2c73apkn90-a.frankfurt-postgres.render.com",
     database= "exp02",
     user= "kelvin",
     password="8r9aws8VsQyRxv3a9vcqB9PFcA6VUKYz",
