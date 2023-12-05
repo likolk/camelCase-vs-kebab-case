@@ -3,10 +3,10 @@ import csv
 
 try:
     conn = psycopg2.connect(
-        host="dpg-cljgru6g1b2c73apkn90-a.frankfurt-postgres.render.com",
-        database="exp02",
+        host="dpg-clniht5e89qs739ga8jg-a.frankfurt-postgres.render.com",
+        database="exp02_emd1",
         user="kelvin",
-        password="8r9aws8VsQyRxv3a9vcqB9PFcA6VUKYz",
+        password="sKiMWw1Lfiy1Zr2EcFFlCMEhw8bBS0Vz",
         port="5432"
     )
 
@@ -28,7 +28,14 @@ except psycopg2.Error as e:
     print("Error occurred while connecting to PostgreSQL:", e)
 
 finally:
-    if cursor:
-        cursor.close()
-    if conn:
-        conn.close()
+    try:
+        if cursor:
+            cursor.close()
+    except NameError:
+        pass  # Cursor was not defined
+
+    try:
+        if conn:
+            conn.close()
+    except NameError:
+        pass  # Connection was not defined

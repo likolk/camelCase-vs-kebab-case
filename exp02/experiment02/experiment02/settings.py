@@ -30,7 +30,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     'exp02likollari.onrender.com',
-    
+    'onrender.com',
 ]
 
 
@@ -103,10 +103,10 @@ WSGI_APPLICATION = "experiment02.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'exp02',  
+        'NAME': 'exp02_emd1',  
         'USER': 'kelvin', 
-        'PASSWORD': '8r9aws8VsQyRxv3a9vcqB9PFcA6VUKYz', 
-        'HOST': 'dpg-cljgru6g1b2c73apkn90-a.frankfurt-postgres.render.com',  
+        'PASSWORD': 'sKiMWw1Lfiy1Zr2EcFFlCMEhw8bBS0Vz', 
+        'HOST': 'dpg-clniht5e89qs739ga8jg-a.frankfurt-postgres.render.com',  
         'PORT': '5432',  
     }
 }
