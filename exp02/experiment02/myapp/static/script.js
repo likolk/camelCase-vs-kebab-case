@@ -106,7 +106,7 @@ function displayFirstQuestion() {
             const isCorrect = selectedAnswer === selectedQuestion.correctAnswer;
             console.log(`Is Correct? ${isCorrect}`);
             const endTime = new Date();
-            const timeTaken = (endTime - startTime) / 1000;
+            let timeTaken = (endTime - startTime) / 1000;
             totalTimeTaken += timeTaken;
             timeTakenToAnswerEachQuestion.push(timeTaken);
             console.log("Time taken for question 1:", timeTaken);
@@ -184,7 +184,7 @@ function displayQuestion(index) {
             const isCorrect = selectedAnswer === selectedQuestion.correctAnswer;
             console.log(`Is Correct? ${isCorrect}`);
             const endTime = new Date();
-            const timeTaken = (endTime - startTime) / 1000;
+            let timeTaken = (endTime - startTime) / 1000;
             totalTimeTaken += timeTaken;
             timeTakenToAnswerEachQuestion.push(timeTaken);
             console.log(`Time taken for question ${selectedAnswer}`, timeTaken);
@@ -252,7 +252,7 @@ function nextQuestion() {
             confirmButtonText: "Go to Home Page",
         }).then(() => {
             console.log("calling compile")
-            compilePostgresql()
+            // compilePostgresql()
             window.location.href = "/"   
         })
         console.log("going to call download csv")
