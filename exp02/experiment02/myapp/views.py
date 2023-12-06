@@ -71,9 +71,14 @@ def compile_postgresqlToCSV(request):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
     
+from django.http import Http404
 
 def download_csv(request):
     try:
+        session_id = request.GET.get('session_id')  
+        if not session_id:
+            raise Http404("You have not provided a SessionID")
+
         conn = psycopg2.connect(
             host="dpg-clniht5e89qs739ga8jg-a.frankfurt-postgres.render.com",
             database="exp02_emd1",
@@ -83,23 +88,13 @@ def download_csv(request):
         )
         cursor = conn.cursor()
 
-        cursor.execute("SELECT * FROM myapp_demographics")
-
+        cursor.execute("SELECT * FROM myapp_demographics WHERE session_id = %s", (session_id,))
         rows = cursor.fetchall()
-
-        # Get column names
         column_names = [desc[0] for desc in cursor.description]
-
-        # Prepare CSV data
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename=demographics.csv'
-
         csv_writer = csv.writer(response)
-        
-        # Write headers
         csv_writer.writerow(column_names)
-
-        # Write rows
         csv_writer.writerows(rows)
 
         return response
