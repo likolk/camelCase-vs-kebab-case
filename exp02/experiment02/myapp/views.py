@@ -75,7 +75,8 @@ from django.http import Http404
 
 def download_csv(request):
     try:
-        session_id = request.GET.get('session_id')  
+        data = json.loads(request.body)
+        session_id = data.get('session_id');
         if not session_id:
             raise Http404("You have not provided a SessionID")
 
