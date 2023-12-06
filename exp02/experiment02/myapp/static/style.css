@@ -82,3 +82,63 @@ h3 {
 h3 a {
     color: #ff0000;
 }
+
+
+.question-container {
+    margin: 20px;
+    padding: 20px;
+    border: 3px solid #000000;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.question-heading {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.question-sentence {
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #000000;
+    font-weight: bolder;
+    line-height: 1.6em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+}
+
+.option {
+    padding: 12px 20px;
+    margin-bottom: 15px;
+    border-radius: 25px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    width: calc(100% - 40px);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.option:hover {
+    background-color: orangered;
+}

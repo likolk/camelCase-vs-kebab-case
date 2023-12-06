@@ -88,15 +88,20 @@ function displayFirstQuestion() {
     `).join('');
 
     const questionFormHTML = `
-        <h2>Pick the correct sentence that matches: ${sentence}</h2>
+    <div class="question-container">
+        <h2 class="question-heading">Pick the correct sentence that matches:</h2>
+        <p class="question-sentence">${sentence}</p>
         <div class="options-container">${optionsHTML}</div>
-    `;
+    </div>
+`;
+
 
     console.log("Displaying first question:", selectedQuestion);
     console.log("Generated HTML:", questionFormHTML);
     console.log("Correct answer:", selectedQuestion.correctAnswer);
 
     questionContainer.innerHTML = questionFormHTML;
+    applyOptionStyles();
 
     const optionButtons = document.querySelectorAll('.option');
     optionButtons.forEach(button => {
@@ -170,6 +175,7 @@ function displayQuestion(index) {
     console.log("Correct answer:", selectedQuestion.correctAnswer);
 
     questionContainer.innerHTML = questionFormHTML;
+    applyOptionStyles();
 
     const optionButtons = document.querySelectorAll('.option');
     optionButtons.forEach(button => {
@@ -398,4 +404,82 @@ function saveSessionIDToLocalStorage() {
         localStorage.setItem('session_id', sessionID);
         console.log('Session ID saved in local storage:', sessionID);
     }
+}
+
+function applyOptionStyles() {
+    console.log("called option styles APPLY");
+    const questionContainer = document.querySelector('.question-container');
+    if (questionContainer) {
+        questionContainer.style.margin = '20px';
+        questionContainer.style.padding = '20px';
+        questionContainer.style.border = '3px solid #000000';
+        questionContainer.style.borderRadius = '10px';
+        questionContainer.style.backgroundColor = 'whitesmoke';
+        questionContainer.style.boxShadow = '0px 2px 4px rgba(0, 0, 0, 0.2)';
+        questionContainer.style.maxWidth = '1600px';
+        questionContainer.style.marginLeft = 'auto';
+        questionContainer.style.marginRight = 'auto';
+
+    }
+
+    const questionHeading = document.querySelector('.question-heading');
+    if (questionHeading) {
+        questionHeading.style.fontSize = '28px';
+        questionHeading.style.fontWeight = 'bold';
+        questionHeading.style.color = '#333';
+        questionHeading.style.textAlign = 'center';
+        questionHeading.style.marginBottom = '15px';
+        questionHeading.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.2)';
+
+    }
+
+    const questionSentence = document.querySelector('.question-sentence');
+    if (questionSentence) {
+        questionSentence.style.fontSize = '20px';
+        questionSentence.style.marginBottom = '20px';
+        questionSentence.style.textAlign = 'center';
+        questionSentence.style.color = '#000000';
+        questionSentence.style.fontWeight = 'bolder';
+        questionSentence.style.lineHeight = '1.6em';
+        questionSentence.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.2)';
+
+    }
+
+    const optionsContainer = document.querySelector('.options-container');
+    if (optionsContainer) {
+        optionsContainer.style.display = 'flex';
+        optionsContainer.style.flexDirection = 'column';
+        optionsContainer.style.alignItems = 'stretch';
+        optionsContainer.style.width = '100%';
+
+    }
+
+    const optionButtons = document.querySelectorAll('.option');
+    optionButtons.forEach(button => {
+        button.style.padding = '12px 20px';
+        button.style.marginBottom = '15px';
+        button.style.borderRadius = '25px';
+        button.style.backgroundColor = '#4CAF50';
+        button.style.color = 'white';
+        button.style.fontSize = '18px';
+        button.style.textAlign = 'center';
+        button.style.cursor = 'pointer';
+        button.style.transition = 'background-color 0.3s ease';
+        button.style.boxShadow = '0px 2px 4px rgba(0, 0, 0, 0.2)';
+        button.style.width = 'calc(100% - 40px)';
+        button.style.maxWidth = '400px';
+        button.style.marginLeft = 'auto';
+        button.style.marginRight = 'auto';
+
+
+        button.addEventListener('mouseenter', () => {
+            button.style.backgroundColor = 'orangered';
+
+        });
+
+        button.addEventListener('mouseleave', () => {
+            button.style.backgroundColor = '#4CAF50';
+            
+        });
+    });
 }
