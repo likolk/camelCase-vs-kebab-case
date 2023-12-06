@@ -9,6 +9,8 @@ urlpatterns = [
     path('submitDemographics/', views.submitDemographics, name='submitDemographics'),
     path('save-response/', views.save_response, name='save_response'),
     path('compile-postgresqlToCSV/', views.compile_postgresqlToCSV, name='compile_postgresqlToCSV'),
-    path('download-csv/', views.download_csv, name='download_csv')
+    # path('download-csv/', views.download_csv, name='download_csv')
+    path('download-csv/<uuid:session_id>', views.download_csv, name='download_csv')
+
 
 ]

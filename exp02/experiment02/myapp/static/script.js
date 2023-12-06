@@ -224,6 +224,12 @@ function displayQuestion(index) {
 }
 
 function nextQuestion() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const session_id = urlParams.get('session_id');
+    console.log("Session ID from URL:", session_id);
+    localStorage.setItem('session_id', session_id);
+    console.log("Session ID saved to local storage:", session_id);
+
     console.log("next called")
     if (shownQuestions.length < questions.length) {
         let randomQuestionIndex = Math.floor(Math.random() * questions.length)
@@ -238,7 +244,6 @@ function nextQuestion() {
             title: "Congratulations! You have succesfully completed the experiment",
             text: `You took ${totalTimeTaken} seconds to answer all questions`,
             icon: "success",
-            timer: 100000,
             timerProgressBar: true,
             showConfirmButton: true,
             grow: true,
@@ -246,12 +251,21 @@ function nextQuestion() {
             allowClickOutside: true,
             confirmButtonText: "Go to Home Page",
         }).then(() => {
+
             console.log("calling compile")
             compilePostgresql()
-            window.location.href = "/"   
-        })
-        window.location.href="/download-csv"
-        console.log("going to call download csv")
+
+            const session_id = localStorage.getItem('session_id');
+            console.log(session_id)
+           
+            window.location.href=`/download-csv/${session_id}`
+
+            setTimeout(() => {
+                window.location.href = "/";
+            }, 3000); 
+        }) 
+
+        
         // downloadCSVLocally()
     }
 }
@@ -306,15 +320,15 @@ function getCookie(name) {
 }
 
 window.onload = () => {
+    saveSessionIDToLocalStorage();
     displayFirstQuestion();
 }
 
 
 
 
-function sendResponseToServer(session_id, question, answer, timeTaken, isCorrect) {
-    // get the session id generated in the python file
 
+function sendResponseToServer(session_id, question, answer, timeTaken, isCorrect) {
     fetch('/save-response/', {
         method: 'POST',
         headers: {
@@ -376,3 +390,12 @@ function downloadCSVLocally() {
     console.log("Finito");
 }
 
+
+function saveSessionIDToLocalStorage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionID = urlParams.get('session_id');
+    if (sessionID) {
+        localStorage.setItem('session_id', sessionID);
+        console.log('Session ID saved in local storage:', sessionID);
+    }
+}

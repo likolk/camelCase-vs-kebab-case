@@ -17,6 +17,7 @@ def demographics(request):
 def questions(request):
     return render(request, 'questions.html')
 
+
 @ensure_csrf_cookie
 def submitDemographics(request):
     if request.method == 'POST':
@@ -24,13 +25,16 @@ def submitDemographics(request):
         comments = request.POST.get('comments')
         experience = request.POST.get('experience')
         session_id = str(uuid.uuid4())
-        # Create a new entry in the Demographics model
         d = Demographics()
         d.session_id = session_id
         d.age = age
         d.experience = experience
         d.comments = comments
         d.save()
+        response = HttpResponse()
+        response.set_cookie('session_id', session_id)
+        print("succesfulyl saved into local storage:")
+        print(request.COOKIES)
         return redirect(reverse('questions') + f'?session_id={session_id}')
     else:
         return render(request, 'demographics.html')
@@ -48,7 +52,6 @@ def save_response(request):
         demographics_instance = Demographics.objects.filter(session_id=session_id).first()
 
         if demographics_instance:
-            # append new response data to existing fields plus a spearator
             demographics_instance.questions += question + ','
             demographics_instance.answers += answer + ','
             demographics_instance.time_taken += str(time_taken) + ', '  
@@ -73,10 +76,10 @@ def compile_postgresqlToCSV(request):
     
 from django.http import Http404
 
-def download_csv(request):
+
+def download_csv(request, session_id):
+    print("got session id:", session_id)
     try:
-        data = json.loads(request.body)
-        session_id = data.get('session_id');
         if not session_id:
             raise Http404("You have not provided a SessionID")
 
@@ -89,7 +92,7 @@ def download_csv(request):
         )
         cursor = conn.cursor()
 
-        cursor.execute("SELECT * FROM myapp_demographics WHERE session_id = %s", (session_id,))
+        cursor.execute(f"SELECT * FROM myapp_demographics WHERE session_id = '{session_id}'")
         rows = cursor.fetchall()
         column_names = [desc[0] for desc in cursor.description]
         response = HttpResponse(content_type='text/csv')
