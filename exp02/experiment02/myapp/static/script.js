@@ -9,46 +9,46 @@ const questions = [
         identifiers: ['i-am-a-student', 'i-am-an-student', 'i-am-a-studend', 'i-am-a-studend'],
         correctAnswer: 'i-am-a-student'
     },
-    // {
-    //     sentence: "experimentation and evaluation course",
-    //     identifiers: ['experimentation-and-evaluation-curse','experimentation-and-evaluation-course', 'experimentation-and-evaluation-coarse', 'experinentation-and-evaluation-course'],
-    //     correctAnswer: 'experimentation-and-evaluation-course'
-    // },
-    // {
-    //     sentence: "eat lunch at mensa",
-    //     identifiers: ['eat-lunch-at-mensa', 'eat-lanch-at-mensa', 'eat-launch-at-mensa', 'it-lunch-at-mensa'],
-    //     correctAnswer: 'eat-lunch-at-mensa'
-    // },
-    // {
-    //     sentence: "Università della Svizzera italiana",
-    //     identifiers: ['universitàDellaSvizzerataliana', 'universitàDellaSvizzeraItaliano', 'universitàDellaSvizzeraItaliana', 'universitàDellaSvizzeraItaliama'],
-    //     correctAnswer: 'universitàDellaSvizzeraItaliana'
-    // },
-    // {
-    //     sentence: "180 ECTS",
-    //     identifiers: ['18O-ECTS', '180-ECTS', '180-ETCS', '780-ECTS'],
-    //     correctAnswer: '180-ECTS'
-    // },
-    // {
-    //     sentence: "I am a university student",
-    //     identifiers: ['iAmAnUniversityStudent', 'iAmAUniversityStudent', 'AmAUniversityStudent', 'iAmUniversityStudent'],
-    //     correctAnswer: 'iAmAUniversityStudent'
-    // },
-    // {
-    //     sentence: "tomorrow it is gonna be rainy",
-    //     identifiers: ['tomorrowItIsGonnaBeRany', 'tomorrowItIsGonneBeRainy', 'tomorrowItIsGonnaBeRaney', 'tomorrowItIsGonnaBeRainy'],
-    //     correctAnswer: 'tomorrowItIsGonnaBeRainy'
-    // }, 
-    // {
-    //     sentence: "Looking forward to the Christmas Holidays",
-    //     identifiers: ['lokingForwardToTheChristmasHolidays', 'lookingForwardToTheChristmasHoliday', 'lookingForwardToTheChristmasHolidays', 'lookingForwardToTheChristmasHollidays'],
-    //     correctAnswer: 'lookingForwardToTheChristmasHolidays'  
-    // },
-    // {
-    //     sentence: "This is a sentence",
-    //     identifiers: ['this-a-sentence', 'this-is-a-sentence', 'this-is-a-sentences', 'these-a-is-sentence'],
-    //     correctAnswer: 'this-is-a-sentence'
-    // }
+    {
+        sentence: "experimentation and evaluation course",
+        identifiers: ['experimentation-and-evaluation-curse','experimentation-and-evaluation-course', 'experimentation-and-evaluation-coarse', 'experinentation-and-evaluation-course'],
+        correctAnswer: 'experimentation-and-evaluation-course'
+    },
+    {
+        sentence: "eat lunch at mensa",
+        identifiers: ['eat-lunch-at-mensa', 'eat-lanch-at-mensa', 'eat-launch-at-mensa', 'it-lunch-at-mensa'],
+        correctAnswer: 'eat-lunch-at-mensa'
+    },
+    {
+        sentence: "Università della Svizzera italiana",
+        identifiers: ['universitàDellaSvizzerataliana', 'universitàDellaSvizzeraItaliano', 'universitàDellaSvizzeraItaliana', 'universitàDellaSvizzeraItaliama'],
+        correctAnswer: 'universitàDellaSvizzeraItaliana'
+    },
+    {
+        sentence: "I am a university student",
+        identifiers: ['iAmAnUniversityStudent', 'iAmAUniversityStudent', 'AmAUniversityStudent', 'iAmUniversityStudent'],
+        correctAnswer: 'iAmAUniversityStudent'
+    },
+    {
+        sentence: "tomorrow it is gonna be rainy",
+        identifiers: ['tomorrowItIsGonnaBeRany', 'tomorrowItIsGonneBeRainy', 'tomorrowItIsGonnaBeRaney', 'tomorrowItIsGonnaBeRainy'],
+        correctAnswer: 'tomorrowItIsGonnaBeRainy'
+    }, 
+    {
+        sentence: "Looking forward to Christmas",
+        identifiers: ['lokingForwardToChristmas', 'lookingForwardToChristmas', 'lookingForwardToKhristmas', 'lookingForwardToChrismas'],
+        correctAnswer: 'lookingForwardToChristmas'
+    },
+    {
+        sentence: "This is a sentence",
+        identifiers: ['this-a-sentence', 'this-is-a-sentence', 'this-is-a-sentences', 'these-a-is-sentence'],
+        correctAnswer: 'this-is-a-sentence'
+    },
+    {
+        sentence: "I am from Greece",
+        identifiers: ['i-am-from-greece', 'i-am-from-grece', 'i-am-from-grecee', 'i-am-from-greecee'],
+        correctAnswer: 'i-am-from-greece'
+    }
 ]
 
 
@@ -101,7 +101,6 @@ function displayFirstQuestion() {
     console.log("Correct answer:", selectedQuestion.correctAnswer);
 
     questionContainer.innerHTML = questionFormHTML;
-    applyOptionStyles();
 
     const optionButtons = document.querySelectorAll('.option');
     optionButtons.forEach(button => {
@@ -156,26 +155,32 @@ function displayQuestion(index) {
     const urlParams = new URLSearchParams(window.location.search);
     const session_id = urlParams.get('session_id');
     console.log("session_id", session_id)
+
+
     startTime = new Date()
     const selectedQuestion = questions[index];
     const { sentence, identifiers } = selectedQuestion;
     shownQuestions.push(selectedQuestion)
+
     const shuffled_identifiers = shuffle_responses(identifiers);
+    
     const optionsHTML = shuffled_identifiers.map(identifier => `
         <button class="option" value="${identifier}">${identifier}</button>
     `).join('');
 
     const questionFormHTML = `
-        <h2>Pick the correct sentence that matches: ${sentence}</h2>
+    <div class="question-container">
+        <h2 class="question-heading">Pick the correct sentence that matches:</h2>
+        <p class="question-sentence">${sentence}</p>
         <div class="options-container">${optionsHTML}</div>
-    `;
+    </div>
+`;
 
     console.log("Displaying question:", selectedQuestion);
     console.log("Generated HTML:", questionFormHTML);
     console.log("Correct answer:", selectedQuestion.correctAnswer);
 
     questionContainer.innerHTML = questionFormHTML;
-    applyOptionStyles();
 
     const optionButtons = document.querySelectorAll('.option');
     optionButtons.forEach(button => {
@@ -238,8 +243,9 @@ function nextQuestion() {
 
     console.log("next called")
     if (shownQuestions.length < questions.length) {
-        let randomQuestionIndex = Math.floor(Math.random() * questions.length)
+        randomQuestionIndex = Math.floor(Math.random() * questions.length); // Remove the 'let' keyword here
         if (shownQuestions.includes(questions[randomQuestionIndex])) {
+            addStyles();
             nextQuestion();
         } else {
             displayQuestion(randomQuestionIndex);
@@ -328,6 +334,7 @@ function getCookie(name) {
 window.onload = () => {
     saveSessionIDToLocalStorage();
     displayFirstQuestion();
+    addStyles();
 }
 
 
@@ -406,80 +413,71 @@ function saveSessionIDToLocalStorage() {
     }
 }
 
-function applyOptionStyles() {
-    console.log("called option styles APPLY");
-    const questionContainer = document.querySelector('.question-container');
-    if (questionContainer) {
-        questionContainer.style.margin = '20px';
-        questionContainer.style.padding = '20px';
-        questionContainer.style.border = '3px solid #000000';
-        questionContainer.style.borderRadius = '10px';
-        questionContainer.style.backgroundColor = 'whitesmoke';
-        questionContainer.style.boxShadow = '0px 2px 4px rgba(0, 0, 0, 0.2)';
-        questionContainer.style.maxWidth = '1600px';
-        questionContainer.style.marginLeft = 'auto';
-        questionContainer.style.marginRight = 'auto';
-
-    }
-
-    const questionHeading = document.querySelector('.question-heading');
-    if (questionHeading) {
-        questionHeading.style.fontSize = '28px';
-        questionHeading.style.fontWeight = 'bold';
-        questionHeading.style.color = '#333';
-        questionHeading.style.textAlign = 'center';
-        questionHeading.style.marginBottom = '15px';
-        questionHeading.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.2)';
-
-    }
-
-    const questionSentence = document.querySelector('.question-sentence');
-    if (questionSentence) {
-        questionSentence.style.fontSize = '20px';
-        questionSentence.style.marginBottom = '20px';
-        questionSentence.style.textAlign = 'center';
-        questionSentence.style.color = '#000000';
-        questionSentence.style.fontWeight = 'bolder';
-        questionSentence.style.lineHeight = '1.6em';
-        questionSentence.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.2)';
-
-    }
-
-    const optionsContainer = document.querySelector('.options-container');
-    if (optionsContainer) {
-        optionsContainer.style.display = 'flex';
-        optionsContainer.style.flexDirection = 'column';
-        optionsContainer.style.alignItems = 'stretch';
-        optionsContainer.style.width = '100%';
-
-    }
-
-    const optionButtons = document.querySelectorAll('.option');
-    optionButtons.forEach(button => {
-        button.style.padding = '12px 20px';
-        button.style.marginBottom = '15px';
-        button.style.borderRadius = '25px';
-        button.style.backgroundColor = '#4CAF50';
-        button.style.color = 'white';
-        button.style.fontSize = '18px';
-        button.style.textAlign = 'center';
-        button.style.cursor = 'pointer';
-        button.style.transition = 'background-color 0.3s ease';
-        button.style.boxShadow = '0px 2px 4px rgba(0, 0, 0, 0.2)';
-        button.style.width = 'calc(100% - 40px)';
-        button.style.maxWidth = '400px';
-        button.style.marginLeft = 'auto';
-        button.style.marginRight = 'auto';
-
-
-        button.addEventListener('mouseenter', () => {
-            button.style.backgroundColor = 'orangered';
-
-        });
-
-        button.addEventListener('mouseleave', () => {
-            button.style.backgroundColor = '#4CAF50';
-            
-        });
-    });
-}
+function addStyles() {
+    const styles = `
+      .question-container {
+        margin: 20px;
+        padding: 20px;
+        border: 3px solid #000000;
+        border-radius: 10px;
+        background-color: whitesmoke;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        max-width: 1600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+  
+      .question-heading {
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+  
+      .question-sentence {
+        font-size: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #000000;
+        font-weight: bolder;
+        line-height: 1.6em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+  
+      .options-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+      }
+  
+      .option {
+        padding: 12px 20px;
+        margin-bottom: 15px;
+        border-radius: 25px;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        width: calc(100% - 40px);
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+  
+      .option:hover {
+        background-color: orangered;
+      }
+    `;
+  
+    const styleSheet = document.createElement('style');
+    styleSheet.type = 'text/css';
+    styleSheet.innerText = styles;
+    document.head.appendChild(styleSheet);
+  }
+  

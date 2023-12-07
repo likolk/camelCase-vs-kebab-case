@@ -1,23 +1,5 @@
 age,comments,questions,answers,time_taken,session_id,is_correct,experience
-39,kelvin test,"i am a student,i have no idea,","i-am-a-student,iHaveNoIdea,","3.411, 1.441, ",eb68fb25-ed2c-45ee-b192-309f32c00808,"True, True, ",yes
-47,come no?,"i am a student,i am a student,i have no idea,","i-am-an-student,i-am-a-student,iHaveNoIdea,","1.495, 2.401, 0.897, ",baced61c-79fe-48f3-a6c1-e77bc1b30d29,"False, True, True, ",yes
-57,3900,"i have no idea,i am a student,","iHaveNoIdea,i-am-a-student,","6.544, 1.695, ",c560f95e-5e5c-4424-a280-f5c2df91d558,"True, True, ",yes
-99,full,"i have no idea,i am a student,","iHaveNoIdea,i-am-a-student,","1.74, 1.869, ",cb1ef493-f8e9-4d8b-9c93-71890ac1d947,"True, True, ",yes
-44,latto,"i have no idea,i am a student,","iHaveNoIdea,i-am-a-student,","1.408, 1.671, ",07322fde-9284-4dcb-bbb5-bf6fb8c9b456,"True, True, ",yes
-19,zuri,"i am a student,i have no idea,","i-am-a-student,iHaveNoIdea,","1.916, 1.48, ",6a692aff-4ca2-438e-a8bb-24f61e220e7a,"True, True, ",yes
-48,graduate,"i am a student,i have no idea,","i-am-a-student,iHaveNoIdea,","1.379, 2.555, ",50e8492f-ff8e-4770-b885-86e61aac76c7,"True, True, ",yes
-88,miko,"i am a student,i have no idea,","i-am-a-student,iHaveNoIdea,","1.672, 2.256, ",9222f614-1928-4517-87e7-d4c8770bd385,"True, True, ",no
-99,no roots,"i have no idea,i am a student,","iHaveNoIdea,i-am-a-student,","1.881, 2.272, ",57db73c0-640f-4f18-ba70-a8609b05f526,"True, True, ",yes
-33,33,,,,8277ed8c-3903-4e74-9b05-3ab8c2e91afb,,yes
-44,nope,"i have no idea,","iHaveNoIdea,","24.35, ",2ac6cbee-9c83-424f-8ad6-9a40a2d3134c,"True, ",no
-44,nope,"i have no idea,i have no idea,","iHaveNoIdea,iHaveNoIdea,","5.761, 1.211, ",5e68fca2-77ab-4bfa-a34e-8c20e32da63a,"True, True, ",no
-33,juve,"i am a student,i am a student,i have no idea,","i-am-a-student,i-am-a-student,iHaveNoIdea,","1.201, 0.982, 5.048, ",739d7ff3-5525-4533-b2ee-7fb9edf1af13,"True, True, True, ",no
-77,322332322323,,,,de78b689-f4c9-46b3-a343-a76a6c85cd22,,yes
-33,no,,,,b661e01b-1016-4582-9cc6-d68091d1e5ed,,yes
-42,e,"i am a student,i have no idea,","i-am-a-student,iHaveNoIdea,","2.419, 2.283, ",17499bb1-3cc1-4803-8638-5e1df2dabdce,"True, True, ",yes
-48,nope,"i have no idea,","iHaveNoIdea,","1.452, ",6dd7ed40-e6f3-4f5e-a8ec-1045c3470071,"True, ",yes
-33,33,"i am a student,","i-am-a-student,","1.794, ",a996812d-d9ac-4f3b-a4c4-1159ec30533a,"True, ",yes
-20,nonono,"i am a student,","i-am-a-student,","2.507, ",2ad5bed6-8491-42b9-ac6f-c289b39a1444,"True, ",yes
-39,ruh,"i am a student,i have no idea,","i-am-a-student,iHaveNoIdea,","3.077, 1.587, ",4ced54a4-5875-47ed-ad46-8aaf46c48713,"True, True, ",yes
-44,43,,,,31f7873c-e619-4747-810b-5b7d1f0a68f5,,yes
-49,no comment,"i have no idea,i have no idea,i have no idea,i have no idea,i have no idea,i am a student,","iHaveNoIdea,1HaveNoIdea,iHaveN0Idea,iHaveNoIdea,iHaveNoIdea,i-am-a-student,","4.376, 1.716, 3.45, 6.087, 2.452, 1.76, ",a274aa95-6431-4b0f-be30-c54beb828777,"True, False, False, True, True, True, ",no
+42,my name is mario,"i am a student,i have no idea,","i-am-a-student,iHaveNoIdea,","1.326, 1.82, ",91001fe1-f165-40ca-b015-39199dc012e4,"True, True, ",yes
+33,ballo ballo,"i have no idea,","iHaveNoIdea,","2.104, ",54cc751d-3619-492c-a3e1-5bd7451f0a48,"True, ",yes
+47,😂😂,"i am a student,i have no idea,","i-am-a-student,iHaveNoIdea,","2.072, 2.759, ",849d7043-77b0-4aae-82b4-e3538dda714d,"True, True, ",yes
+49,watch me daaaaaaanceeeeeeeeee,"i am a student,i have no idea,i have no idea,","i-am-a-student,1HaveNoIdea,iHaveNoIdea,","2.272, 1.13, 3.148, ",f4a31726-51bc-4236-86eb-616b4c13920e,"True, False, True, ",yes
