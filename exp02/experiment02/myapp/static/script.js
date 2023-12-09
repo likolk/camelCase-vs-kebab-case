@@ -57,9 +57,6 @@ let startTime;
 let totalTimeTaken = 0;
 let interval;
 
-// get question index
-
-
 let shownQuestions = []
 
 let timeTakenToAnswerEachQuestion = []
@@ -109,16 +106,16 @@ function displayFirstQuestion() {
             console.log(`Selected answer: ${selectedAnswer}`);
             const isCorrect = selectedAnswer === selectedQuestion.correctAnswer;
             console.log(`Is Correct? ${isCorrect}`);
-            const endTime = new Date();
-            let timeTaken = (endTime - startTime) / 1000;
-            totalTimeTaken += timeTaken;
-            timeTakenToAnswerEachQuestion.push(timeTaken);
-            console.log("Time taken for question 1:", timeTaken);
-            console.log("TOTAL TIME TAKEN UNTIL NOW:", totalTimeTaken)
-            console.log("saving response")
-            sendResponseToServer(session_id, selectedQuestion.sentence, selectedAnswer, timeTaken, isCorrect);
-            console.log("response should be saved")
             if (isCorrect) {
+                const endTime = new Date();
+                let timeTaken = (endTime - startTime) / 1000;
+                totalTimeTaken += timeTaken;
+                timeTakenToAnswerEachQuestion.push(timeTaken);
+                console.log("Time taken for question 1:", timeTaken);
+                console.log("TOTAL TIME TAKEN UNTIL NOW:", totalTimeTaken)
+                console.log("saving response")
+                sendResponseToServer(session_id, selectedQuestion.sentence, selectedAnswer, timeTaken, isCorrect);
+                console.log("response should be saved")
                 Swal.fire({
                     title: "Your answer is correct ",
                     text: `You took ${timeTaken} seconds to answer correctly this question`,
@@ -189,16 +186,16 @@ function displayQuestion(index) {
             console.log(`Selected answer: ${selectedAnswer}`);
             const isCorrect = selectedAnswer === selectedQuestion.correctAnswer;
             console.log(`Is Correct? ${isCorrect}`);
-            const endTime = new Date();
-            let timeTaken = (endTime - startTime) / 1000;
-            totalTimeTaken += timeTaken;
-            timeTakenToAnswerEachQuestion.push(timeTaken);
-            console.log(`Time taken for question ${selectedAnswer}`, timeTaken);
-            console.log("TOTAL TIME TAKEN UNTIL NOW:", totalTimeTaken)
-            console.log("saving response")
-            sendResponseToServer(session_id, selectedQuestion.sentence, selectedAnswer, timeTaken, isCorrect);
-            console.log("response should be saved")
             if (isCorrect) {
+                const endTime = new Date();
+                let timeTaken = (endTime - startTime) / 1000;
+                totalTimeTaken += timeTaken;
+                timeTakenToAnswerEachQuestion.push(timeTaken);
+                console.log(`Time taken for question ${selectedAnswer}`, timeTaken);
+                console.log("TOTAL TIME TAKEN UNTIL NOW:", totalTimeTaken)
+                console.log("saving response")
+                sendResponseToServer(session_id, selectedQuestion.sentence, selectedAnswer, timeTaken, isCorrect);
+                console.log("response should be saved")
                 Swal.fire({
                     title: "Your answer is correct ",
                     text: `You took ${timeTaken} seconds to answer correctly this question`,
@@ -225,10 +222,6 @@ function displayQuestion(index) {
                     allowClickOutside: true,
                     confirmButtonColor: 'green',
                 })
-                // .then(() => {
-                //     startTimer()
-                //     nextQuestion();
-                // })
             }
         });
     });
@@ -243,7 +236,7 @@ function nextQuestion() {
 
     console.log("next called")
     if (shownQuestions.length < questions.length) {
-        randomQuestionIndex = Math.floor(Math.random() * questions.length); // Remove the 'let' keyword here
+        randomQuestionIndex = Math.floor(Math.random() * questions.length); 
         if (shownQuestions.includes(questions[randomQuestionIndex])) {
             addStyles();
             nextQuestion();
